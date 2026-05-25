@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1779444879594,
+    "userId": 1777452501844,
+    "movieId": "1226863",
+    "title": "Super Mario  Galaxy Film",
+    "poster": "https://image.tmdb.org/t/p/w500/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
+    "release_date": "2026-04-01"
+  },
+  {
+    "id": 1779449407853,
+    "userId": 1779098726772,
+    "movieId": "1304313",
+    "title": "Mumia. Film Lee Cronina",
+    "poster": "https://image.tmdb.org/t/p/w500/1q308iixueCU4pFtSYugNOevtNx.jpg",
+    "release_date": "2026-04-15"
+  },
+  {
+    "id": 1779449409192,
+    "userId": 1779098726772,
+    "movieId": "1439930",
+    "title": "Punisher: Ostatnie starcie",
+    "poster": "https://image.tmdb.org/t/p/w500/nOmTC7l5CxN9wydKbCtG3dbeLJb.jpg",
+    "release_date": "2026-05-12"
+  },
+  {
+    "id": 1779449410805,
+    "userId": 1779098726772,
+    "movieId": "1226863",
+    "title": "Super Mario  Galaxy Film",
+    "poster": "https://image.tmdb.org/t/p/w500/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
+    "release_date": "2026-04-01"
+  },
+  {
+    "id": 1779703338038,
+    "userId": 1777452501844,
+    "movieId": "1380291",
+    "title": "Tom Clancy: Jack Ryan - Wojna Duchów",
+    "poster": "https://image.tmdb.org/t/p/w500/cPPyWEUksFgVDSpD7a7j7RtjRMh.jpg",
+    "release_date": "2026-05-20"
+  },
+  {
+    "id": 1779703387536,
+    "userId": 1777452501844,
+    "movieId": "1304313",
+    "title": "Mumia. Film Lee Cronina",
+    "poster": "https://image.tmdb.org/t/p/w500/uIb9Tvae5haF0XcQBaPyufmxbb0.jpg",
+    "release_date": "2026-04-15"
+  },
+  {
+    "id": 1779706822081,
+    "userId": 1779706815902,
+    "movieId": "1380291",
+    "title": "Tom Clancy: Jack Ryan - Wojna Duchów",
+    "poster": "https://image.tmdb.org/t/p/w500/cPPyWEUksFgVDSpD7a7j7RtjRMh.jpg",
+    "release_date": "2026-05-20"
+  },
+  {
+    "id": 1779706822988,
+    "userId": 1779706815902,
+    "movieId": "1304313",
+    "title": "Mumia. Film Lee Cronina",
+    "poster": "https://image.tmdb.org/t/p/w500/uIb9Tvae5haF0XcQBaPyufmxbb0.jpg",
+    "release_date": "2026-04-15"
+  }
+]

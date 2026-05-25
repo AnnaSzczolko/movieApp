@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1777452501844,
+    "name": "Mat",
+    "email": "mateusz.szczolko@gmail.com",
+    "password": "$2b$10$OZ/GmP6iciHjUGUzT3v5COQWgNo9NP.45xzms5qAx6HsOOSzDVzA.",
+    "role": "user"
+  },
+  {
+    "id": 1779098726772,
+    "name": "Anna Szczołko",
+    "email": "anna.szczolko@gmail.com",
+    "password": "$2b$10$IBavdUVTuz8L0CNp/YTxTOvABjIDdW1eU9guj4URRIExnP5qnxzAy",
+    "role": "user"
+  },
+  {
+    "id": 1779706928242,
+    "name": "anka",
+    "email": "anka@wp.pl",
+    "password": "$2b$10$2kYgtw7enn6jxj8M.HpSru.5oT6UP7PHnGdB4eHNYijicU5ljXWVG",
+    "role": "user"
+  },
+  {
+    "id": 1779707184836,
+    "name": "Maciej",
+    "email": "maciej@gamil.com",
+    "password": "$2b$10$kxWQumIm/Xt9YLI52v.sgukdjUtmzht8JYCp4H5SHCo/P3a/OjXcy",
+    "role": "user"
+  }
+]
