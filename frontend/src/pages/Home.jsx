@@ -4,9 +4,9 @@ import { useLoaderData } from 'react-router-dom'
 import { redirect } from 'react-router-dom'
 import { useAuthStore } from '../store/useAuthStore'
 import { requireAuth } from '../utils/auth'
-import { fetchMovies } from '../api/movies'
+import { fetchMovies } from '../api/movie'
 import { fetchFavourites, addFavourite, removeFavourite } from '../api/favourites'
-
+import { getHomePageData } from '../services/homePage'
 
 export default function Home() {
 	const { movies, favouriteIds } = useLoaderData()
@@ -27,16 +27,12 @@ export default function Home() {
 	)
 }
 
+
 export async function loader() {
-	const token = requireAuth()
-
 	try {
-		const [moviesRes, favRes] = await Promise.all([fetchMovies(), fetchFavourites(token)])
+		const token = requireAuth()
 
-		return {
-			movies: moviesRes.results || [],
-			favouriteIds: favRes.map(f => Number(f.movieId)),
-		}
+		return await getHomePageData(token)
 	} catch (error) {
 		if (error.message === 'UNAUTHORIZED') {
 			throw redirect('/login')
@@ -73,6 +69,5 @@ export async function action({ request }) {
 			throw redirect('/login')
 		}
 		throw error
-
 	}
 }

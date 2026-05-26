@@ -16,7 +16,7 @@ export async function loginUser(email, password) {
 	}
 
 	if (!response.ok) {
-		throw new Error('LOGIN_FAILED')
+		throw new Error(resData.message || 'LOGIN_FAILED')
 	}
 
 	return resData
@@ -33,7 +33,7 @@ export async function registerUser(name, email, password) {
 	const resData = await response.json()
 
 	if (!response.ok) {
-		throw new Error(data.message || 'Błąd rejestracji')
+		throw new Error(resData.message || 'Błąd rejestracji')
 	}
 
 	return resData

@@ -3,6 +3,7 @@ import { handleToggleFavourite } from '../utils/toggle'
 import { requireAuth } from '../utils/auth'
 import { fetchMovieDetails } from '../api/movie'
 import { fetchFavourites } from '../api/favourites'
+import { getMoviePageData } from '../services/moviePage'
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 
@@ -99,18 +100,19 @@ export default function Movie() {
 	)
 }
 
-export async function loader({ request, params }) {
-	const token = requireAuth()
 
-	const id = params.id
-
+export async function loader({ params }) {
 	try {
-		const [movieData, favData] = await Promise.all([fetchMovieDetails(id), fetchFavourites(token)])
-
-		return {
-			movie: movieData || null,
-			favouriteIds: favData.map(f => Number(f.movieId)),
+		if (!params.id) {
+			throw new Error('Movie ID is required')
 		}
+
+		const token = requireAuth()
+
+		const id = params.id
+
+
+		return await getMoviePageData(id, token)
 	} catch (error) {
 		if (error.message === 'UNAUTHORIZED') {
 			throw redirect('/login')

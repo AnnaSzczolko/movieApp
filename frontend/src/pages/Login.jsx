@@ -52,11 +52,10 @@ export async function action({ request }) {
 		const password = formData.get('password')
 
 		const data = await loginUser(email, password)
-		console.log('Login successful:', data)
 
 		useAuthStore.getState().login(data.name, data.token)
 
-		throw redirect('/')
+		return redirect('/')
 	} catch (error){
 		if (error.message === 'INVALID_CREDENTIALS') {
 			return {
