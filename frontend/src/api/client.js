@@ -1,15 +1,24 @@
 export async function apiFetch(url, options = {}) {
-  const response = await fetch(url, options)
+	const response = await fetch(url, options)
 
-  if (response.status === 401) {
-    throw new Error('UNAUTHORIZED')
-  }
+	if (response.status === 204) {
+		return null
+	}
 
-  const data = await response.json()
+	let data = null
 
-  if (!response.ok) {
-    throw new Error(data.message || 'Request failed')
-  }
+	try {
+		data = await response.json()
+	} catch {
+		data = null
+	}
 
-  return data
+	if (!response.ok) {
+		const error = new Error(data?.message || response.statusText || 'Request failed')
+		error.status = response.status
+
+		throw error
+	}
+
+	return data
 }

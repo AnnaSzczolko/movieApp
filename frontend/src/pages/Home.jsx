@@ -34,11 +34,16 @@ export async function loader() {
 
 		return await getHomePageData(token)
 	} catch (error) {
-		if (error.message === 'UNAUTHORIZED') {
+		if (error.status === 401) {
 			throw redirect('/login')
 		}
 
-		throw new Error('Nie udało się pobrać filmów.')
+		throw new Response(
+			JSON.stringify({
+				message: 'Nie udało się pobrać filmów.',
+			}),
+			{ status: error.status || 500 },
+		)
 	}
 }
 

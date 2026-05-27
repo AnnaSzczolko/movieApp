@@ -114,10 +114,15 @@ export async function loader({ params }) {
 
 		return await getMoviePageData(id, token)
 	} catch (error) {
-		if (error.message === 'UNAUTHORIZED') {
+		if (error.status === 401) {
 			throw redirect('/login')
 		}
 
-		throw new Error('Nie udało się pobrać szczegółów filmu.')
+		throw new Response(
+			JSON.stringify({
+				message: 'Nie udało się pobrać szczegółowych danych danego filmu.',
+			}),
+			{ status: error.status || 500 },
+		)
 	}
 }

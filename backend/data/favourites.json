@@ -8,14 +8,6 @@
     "release_date": "2026-04-01"
   },
   {
-    "id": 1779449410805,
-    "userId": 1779098726772,
-    "movieId": "1226863",
-    "title": "Super Mario  Galaxy Film",
-    "poster": "https://image.tmdb.org/t/p/w500/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
-    "release_date": "2026-04-01"
-  },
-  {
     "id": 1779703387536,
     "userId": 1777452501844,
     "movieId": "1304313",
@@ -38,13 +30,5 @@
     "title": "Mumia. Film Lee Cronina",
     "poster": "https://image.tmdb.org/t/p/w500/uIb9Tvae5haF0XcQBaPyufmxbb0.jpg",
     "release_date": "2026-04-15"
-  },
-  {
-    "id": 1779785552579,
-    "userId": 1779098726772,
-    "movieId": "1007757",
-    "title": "W cudzej skórze",
-    "poster": "https://image.tmdb.org/t/p/w500/tHhxWxge06goXU6ZQH1hj7vK8Hd.jpg",
-    "release_date": "2026-05-01"
   }
 ]

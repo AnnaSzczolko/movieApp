@@ -1,8 +1,7 @@
 import MovieCard from '../components/MovieCard'
 import { useLoaderData, redirect } from 'react-router-dom'
-import {requireAuth } from '../utils/auth'
-import {fetchFavourites} from '../api/favourites'
-
+import { requireAuth } from '../utils/auth'
+import { fetchFavourites } from '../api/favourites'
 
 export default function Favourites() {
 	const favourites = useLoaderData()
@@ -23,7 +22,6 @@ export default function Favourites() {
 	)
 }
 
-
 export async function loader() {
 	const token = requireAuth()
 
@@ -31,10 +29,15 @@ export async function loader() {
 		const favourites = await fetchFavourites(token)
 		return favourites
 	} catch (error) {
-		if (error.message === 'UNAUTHORIZED') {
+		if (error.status === 401) {
 			throw redirect('/login')
 		}
 
-		throw new Error('Nie udało się pobrać ulubionych filmów.')
+		throw new Response(
+			JSON.stringify({
+				message: 'Nie udało się pobrać ulubionych filmów.',
+			}),
+			{ status: error.status || 500 },
+		)
 	}
 }
