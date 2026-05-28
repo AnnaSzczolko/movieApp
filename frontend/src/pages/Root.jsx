@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 import MainNavigation from '../components/MainNavigation'
 import { useAuthStore } from '../store/useAuthStore'
-import {getValidToken} from '../utils/auth'
+import { getValidToken } from '../utils/auth'
 import { getTokenRemainingTime, isTokenExpired } from '../utils/jwt'
+import { ToastContainer } from 'react-toastify'
 
 export default function Root() {
 	const navigate = useNavigate()
@@ -34,6 +35,14 @@ export default function Root() {
 
 	return (
 		<>
+			<ToastContainer
+				position="top-right"
+				autoClose={1500}
+				hideProgressBar={true}
+				newestOnTop
+				closeOnClick
+				pauseOnHover
+			/>
 			<MainNavigation />
 			<main>
 				<Outlet />

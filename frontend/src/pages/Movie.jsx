@@ -4,6 +4,8 @@ import { requireAuth } from '../utils/auth'
 import { fetchMovieDetails } from '../api/movie'
 import { fetchFavourites } from '../api/favourites'
 import { getMoviePageData } from '../services/moviePage'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 
@@ -16,6 +18,13 @@ export default function Movie() {
 	const isFavourite = favouriteIds.includes(movie.id)
 
 	const fetcher = useFetcher()
+
+	useEffect(() => {
+		if (fetcher.state === 'idle' && fetcher.data?.message) {
+			toast(fetcher.data.message)
+		}
+	}, [fetcher.state, fetcher.data])
+
 	let optimisticFavourite = isFavourite
 	const isSubmitting = fetcher.state !== 'idle'
 	const isAdding = fetcher.formData?.get('movieId') == movie.id && fetcher.formData && fetcher.formMethod === 'post'
@@ -100,7 +109,6 @@ export default function Movie() {
 	)
 }
 
-
 export async function loader({ params }) {
 	try {
 		if (!params.id) {
@@ -110,7 +118,6 @@ export async function loader({ params }) {
 		const token = requireAuth()
 
 		const id = params.id
-
 
 		return await getMoviePageData(id, token)
 	} catch (error) {

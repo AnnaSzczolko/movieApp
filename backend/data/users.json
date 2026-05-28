@@ -26,5 +26,12 @@
     "email": "maciej@gamil.com",
     "password": "$2b$10$kxWQumIm/Xt9YLI52v.sgukdjUtmzht8JYCp4H5SHCo/P3a/OjXcy",
     "role": "user"
+  },
+  {
+    "id": 1779885667538,
+    "name": "Anna Szczołko",
+    "email": "szczolko@gmail.com",
+    "password": "$2b$10$LCa1Xo8WdNtEVwUoT2fipO0DNQrQ2pjovqiDvGklJhHumHIv1XhOW",
+    "role": "user"
   }
 ]

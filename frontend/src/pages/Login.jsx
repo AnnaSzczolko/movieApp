@@ -57,14 +57,14 @@ export async function action({ request }) {
 
 		return redirect('/')
 	} catch (error){
-		if (error.message === 'INVALID_CREDENTIALS') {
+		if (error.status === 401) {
 			return {
 				error: 'Nieprawidłowy email lub hasło',
 			}
 		}
 
 		return {
-			error: 'Błąd serwera. Spróbuj ponownie później.',
+			error: 'Błąd serwera',
 		}
 	}
 }

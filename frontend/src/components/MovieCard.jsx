@@ -3,12 +3,21 @@ import { useFetcher } from 'react-router-dom'
 import { Form } from 'react-router-dom'
 import { handleToggleFavourite } from '../utils/toggle'
 import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'
 
 export default function MovieCard({ movie, isFavourite, showFavouriteButton = true }) {
 	const location = useLocation()
 	const fetcher = useFetcher()
+
+	useEffect(() => {
+		if (fetcher.state === 'idle' && fetcher.data?.message) {
+			toast(fetcher.data.message)
+		}
+	}, [fetcher.state, fetcher.data])
+	let fetcherError = fetcher.data?.message
 
 	let optimisticFavourite = isFavourite
 	const isSubmitting = fetcher.state === 'submitting'
@@ -20,7 +29,6 @@ export default function MovieCard({ movie, isFavourite, showFavouriteButton = tr
 
 	const isPending =
 		fetcher.state !== 'idle' && fetcher.formData?.get('movieId') && Number(fetcher.formData.get('movieId')) === movie.id
-
 
 	const toggleHandler = () => {
 		handleToggleFavourite({ movie, isFavourite: optimisticFavourite, fetcher })

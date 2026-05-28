@@ -9,17 +9,16 @@ export async function loginUser(email, password) {
 		body: JSON.stringify({ email, password }),
 	})
 
-	const resData = await response.json()
-
-	if (response.status === 401 || response.status === 422) {
-		throw new Error('INVALID_CREDENTIALS')
-	}
+	const data = await response.json()
 
 	if (!response.ok) {
-		throw new Error(resData.message || 'LOGIN_FAILED')
+		const error = new Error(data?.message || response.statusText || 'Login failed')
+		error.status = response.status
+
+		throw error
 	}
 
-	return resData
+	return data
 }
 export async function registerUser(name, email, password) {
 	const response = await fetch(`${API_URL}/auth/register`, {
@@ -33,7 +32,10 @@ export async function registerUser(name, email, password) {
 	const resData = await response.json()
 
 	if (!response.ok) {
-		throw new Error(resData.message || 'Błąd rejestracji')
+		const error = new Error(resData?.message || response.statusText || 'Registration failed')
+		error.status = response.status
+
+		throw error
 	}
 
 	return resData

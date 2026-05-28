@@ -8,8 +8,13 @@ import { fetchMovies } from '../api/movie'
 import { fetchFavourites, addFavourite, removeFavourite } from '../api/favourites'
 import { getHomePageData } from '../services/homePage'
 
+
+
 export default function Home() {
+
+
 	const { movies, favouriteIds } = useLoaderData()
+
 
 	const favouriteSet = useMemo(() => {
 		return new Set(favouriteIds)
@@ -26,7 +31,6 @@ export default function Home() {
 		</section>
 	)
 }
-
 
 export async function loader() {
 	try {
@@ -62,6 +66,7 @@ export async function action({ request }) {
 
 	try {
 		if (method === 'POST') {
+			throw new Error('Nie można dodawać ulubionych z poziomu strony głównej. Użyj przycisku na stronie szczegółów filmu.')
 			await addFavourite(movie, token)
 		}
 		if (method === 'DELETE') {
@@ -70,9 +75,14 @@ export async function action({ request }) {
 
 		return { success: true }
 	} catch (error) {
-		if (error.message === 'UNAUTHORIZED') {
+		if (error?.status === 401) {
 			throw redirect('/login')
 		}
-		throw error
+
+		return {
+			success: false,
+			message: 'Nie udało się zaktualizować ulubionych.',
+		}
+	
 	}
 }

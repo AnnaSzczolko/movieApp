@@ -11,6 +11,7 @@ export async function fetchFavourites(token) {
 
 
 export async function addFavourite(movie, token) {
+
 	return apiFetch(`${API_URL}/favourites`, {
 		method: 'POST',
 		headers: {
@@ -19,6 +20,7 @@ export async function addFavourite(movie, token) {
 		},
 		body: JSON.stringify(movie),
 	})
+
 }
 
 export async function removeFavourite(id, token) {
