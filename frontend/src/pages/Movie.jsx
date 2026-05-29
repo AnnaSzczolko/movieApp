@@ -122,7 +122,7 @@ export async function loader({ params }) {
 		return await getMoviePageData(id, token)
 	} catch (error) {
 		if (error.status === 401) {
-			throw redirect('/login')
+			return redirect('/login')
 		}
 
 		throw new Response(

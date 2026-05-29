@@ -6,8 +6,6 @@ export async function getHomePageData(token){
 
     const favouriteIds = favRes.map(f => Number(f.movieId))
 
-	// throw new Error('Testowy błąd') // test error handling
-
 	return {
 			movies: moviesRes.results || [],
 			favouriteIds

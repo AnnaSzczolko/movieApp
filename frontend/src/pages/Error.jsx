@@ -3,8 +3,6 @@ import MainNavigation from '../components/MainNavigation'
 
 export default function Error() {
 	const error = useRouteError()
-	console.error('Error:', error)
-
 
 	let title = 'Wystąpił błąd'
 	let message = 'Coś poszło nie tak.'
